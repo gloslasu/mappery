@@ -1,0 +1,25 @@
+GET {{url}}/review
+
+###
+GET {{url}}/review/1
+
+###
+POST {{url}}/review
+Content-Type: application/json
+
+{
+  "id": 1,
+  "content": "XDD qwe asd f",
+  "author": 1
+}
+###
+PATCH {{url}}/review/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "content": "XDD qwe asd f",
+  "author": 1
+}
+###
+DELETE {{url}}/review/1

@@ -1,0 +1,65 @@
+// test integracyjny, jak wbijamy po api to sprawdzamy czy nam zwróci ze statusem 200
+
+GET {{url}}/blog
+
+> {%
+client.test("Response status is 200", () => {
+    client.assert(response.status ==200)
+})
+%}
+
+###
+GET {{url}}/blog/1
+
+> {%
+client.test("Response status is 500", () => {
+    client.assert(response.status ==500)
+})
+%}
+
+###
+POST {{url}}/blog
+Content-Type: application/json // nagłówek do rzadania
+
+{
+  "title": "Tit2",
+  "content": "Cont 2",
+  "reviews": [
+    {
+      "content": "222  asd f",
+      "author": {
+        "id": 1
+      }
+    }
+  ],
+  "authors": [
+    {
+      "id": 1
+    }
+  ]
+}
+
+###
+PATCH {{url}}/blog/1
+Content-Type: application/json
+
+{
+  "title": "Tit2",
+  "content": "Cont 2",
+  "reviews": [
+    {
+      "content": "222  asd f",
+      "author": {
+        "id": 1
+      }
+    }
+  ],
+  "authors": [
+    {
+      "id": 1
+    }
+  ]
+}
+
+###
+DELETE {{url}}/blog/1

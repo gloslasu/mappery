@@ -1,0 +1,45 @@
+GET {{url}}/user
+
+###
+GET {{url}}/user/1
+
+> {%
+    client.test("Response status is 200", () => {
+        client.assert(response.status ==200)
+    })
+%}
+
+###
+POST {{url}}/user
+Content-Type: application/json
+
+{
+  "id": 5,
+  "email": "nowyuzytkownik5@q.qq",
+  "username": "55555",
+  "password": "55555555",
+  "details": {
+    "id": 1,
+    "companyName": "Fajna5",
+    "address": "Ulica 5"
+  }
+}
+
+###
+PATCH {{url}}/user/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "q@q.qq",
+  "username": "qq",
+  "password": "qq",
+  "details": {
+    "id": 1,
+    "companyName": "Fajna",
+    "address": "Ulica 1"
+  }
+}
+
+###
+DELETE {{url}}/user/1
